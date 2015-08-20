@@ -18,14 +18,14 @@ PASSWORD = "player"
 
 AUDIO_FILE = sys.argv[1]
 
+audio=wave.open(AUDIO_FILE)
+
 # create the mumble instance
 mumble = pymumble.Mumble(HOST, PORT, USER, PASSWORD, debug=DEBUG)
 
 mumble.start()  # start the mumble thread
 mumble.is_ready()  # wait for the connection
 mumble.users.myself.unmute()  # by sure the user is not muted
-
-audio=wave.open(AUDIO_FILE)
 
 start = time.time()
 
