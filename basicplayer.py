@@ -11,10 +11,10 @@ from pymumble import pyopus
 
 DEBUG = False
 
-HOST = "localhost"
+HOST = "mumble.nue.suse.com"
 PORT = 64738
-USER = "player"
-PASSWORD = "player"
+USER = "playerbot"
+PASSWORD = "playerbotpw"
 
 # input: 48kHZ mono wav - e.g. from sox INPUT -c 1 -r 48k -t wav -
 AUDIO_FILE = sys.argv[1]

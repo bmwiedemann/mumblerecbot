@@ -13,10 +13,10 @@ SAVEDIR = "rec/"  # folder where to save the recordings
 BUFFER = 0.1  # time to buffer audio input
 PIDFILE = "mumblerecbot.pid"  # location to store the process id
 
-HOST = "localhost"  # murmur server
+HOST = "mumble.nue.suse.com"  # murmur server
 PORT = 64738  # murmur port
 USER = "recorder"  # mumur user
-PASSWORD = "recorder"  # mumur user
+PASSWORD = "recorderpw"  # mumur user
 CHANNEL = ""  # channel to move in ("" = root)
 
 USER_COUNT = 2  # start to record with how many connected users (recorder not included)
