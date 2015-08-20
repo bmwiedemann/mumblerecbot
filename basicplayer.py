@@ -16,6 +16,7 @@ PORT = 64738
 USER = "player"
 PASSWORD = "player"
 
+# input: 48kHZ mono wav - e.g. from sox INPUT -c 1 -r 48k -t wav -
 AUDIO_FILE = sys.argv[1]
 
 audio=wave.open(AUDIO_FILE)
