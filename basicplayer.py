@@ -22,6 +22,9 @@ AUDIO_FILE = sys.argv[1]
 audio=wave.open(AUDIO_FILE)
 
 CHANNEL = "Breakout1"
+if sys.argv.__len__() > 2:
+    CHANNEL = sys.argv[2]
+
 
 # create the mumble instance
 mumble = pymumble.Mumble(HOST, PORT, USER, PASSWORD, debug=DEBUG)
