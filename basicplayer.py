@@ -21,12 +21,15 @@ AUDIO_FILE = sys.argv[1]
 
 audio=wave.open(AUDIO_FILE)
 
+CHANNEL = "Breakout1"
+
 # create the mumble instance
 mumble = pymumble.Mumble(HOST, PORT, USER, PASSWORD, debug=DEBUG)
 
 mumble.start()  # start the mumble thread
 mumble.is_ready()  # wait for the connection
 mumble.users.myself.unmute()  # by sure the user is not muted
+mumble.channels.find_by_name(CHANNEL).move_in()
 
 start = time.time()
 
