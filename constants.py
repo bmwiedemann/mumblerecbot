@@ -9,9 +9,9 @@ DEBUG_ENCODER = True
 #Creates the caption and chapter webvtt files
 CREATE_WEBVTT = True
 
-SAVEDIR = "c:\\temp"  # folder where to save the recordings
+SAVEDIR = "rec/"  # folder where to save the recordings
 BUFFER = 0.1  # time to buffer audio input
-PIDFILE = "c:\\temp\\mumblerecbot.pid"  # location to store the process id
+PIDFILE = "mumblerecbot.pid"  # location to store the process id
 
 HOST = "localhost"  # murmur server
 PORT = 64738  # murmur port
