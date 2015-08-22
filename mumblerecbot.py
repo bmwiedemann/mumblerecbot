@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import wave
 import time
 from threading import Thread
 
@@ -30,7 +31,7 @@ class MumbleRecBot:
         self.current_chapter = None  # insige a chapter (after a /gamestart, before a /gamestop)
         self.last_chapter_time = 0
         self.captions = None  # webvtt object for speakers captions
-        
+        self.playaudiofile = None
         self.cursor_time = None  # time for which the audio is treated
         
         self.force_start = False
@@ -148,6 +149,8 @@ class MumbleRecBot:
             self.mumble.users.myself.comment("Auto mode (starting with %i users)." % USER_COUNT + COMMENT_SUFFIX)
         elif message == "/exit":  # Stop the application
             self.exit = True
+        elif message == "/play":
+            self.playaudiofile = "ding-dang-dong.wav"
         elif message == "/gamestart":  # signal a game start to be recorded in the chapter webvtt file
             if self.chapters is not None and time.time()-self.last_chapter_time > CHAPTER_MIN_INTERVAL:
                 self.last_chapter_time = time.time()
@@ -181,6 +184,19 @@ class MumbleRecBot:
         self.mumble.users.myself.texture(self.load_bitmap(STOP_BITMAP))
         
         while self.mumble.is_alive() and not self.exit:
+	    if self.playaudiofile:
+		    audio = wave.open(self.playaudiofile)
+                    self.playaudiofile = None
+		    self.mumble.users.myself.unmute()
+		    while True:
+			frames = audio.readframes(480)
+			if not frames:
+			    break
+			while self.mumble.sound_output.get_buffer_size() > 0.5:
+			    time.sleep(0.01)  # if mumble outgoing buffer is full enough, wait a bit
+			self.mumble.sound_output.add_sound(frames)  # send a piece of audio to mumble
+                    time.sleep(1.0)
+		    self.mumble.users.myself.mute()
             if  ( ( self.recording and not self.force_stop ) or self.force_start ) and not self.force_newfile: 
                 if not self.audio_file:
                     # Start recording
