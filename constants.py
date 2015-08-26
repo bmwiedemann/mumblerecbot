@@ -37,8 +37,8 @@ STEREO_CHUNK_SIZE = MONO_CHUNK_SIZE * 2
 
 # command to send the audio in a pipe for external encoding. %s will be replaced by a generated name
 #ENCODER = "/usr/bin/oggenc --raw --raw-bits=16 --raw-chan=2 --raw-rate=48000 --quality=4 --quiet -o %s.ogg -"  
-#ENCODER = "oggenc2 --raw --raw-bits=16 --raw-chan=2 --raw-rate=48000 --quality=4 --quiet -o %s.ogg -"
-ENCODER = "ffmpeg -f s16le -ar 48000 -ac 2 -i - -c:a libmp3lame -ab 96k -ac 1 -ar 22050 %s.mp3"
+ENCODER = "oggenc --raw --raw-bits=16 --raw-chan=2 --raw-rate=48000 --quality=4 --quiet -o %s.ogg -"
+#ENCODER = "ffmpeg -f s16le -ar 48000 -ac 2 -i - -c:a libmp3lame -ab 128k -ac 1 %s.mp3"
 
 # comment to be shown in mumble for the recorder user
 COMMENT_SUFFIX = "<br>/start:forced" + \
