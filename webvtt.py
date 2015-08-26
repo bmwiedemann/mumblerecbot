@@ -74,7 +74,7 @@ class Cue:
             ret += u" region:{region} ".format(region=self.region)
         ret += u"\n"
         
-        ret += self.text + u"\n\n"
+        ret += self.text.decode('utf-8') + u"\n\n"
         
         return(ret)
         

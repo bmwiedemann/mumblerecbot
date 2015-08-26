@@ -157,7 +157,7 @@ class MumbleRecBot:
                 for user in self.mumble.users.values():
                     if user["name"] != USER:
                         usernames.append(user["name"])
-                title = "{time} ({users})".format(time=time.ctime(), users=",".join(usernames))
+                title = "{time} ({users})".format(time=time.ctime(), users=",".join(usernames).encode('utf-8'))
                 self.current_chapter = self.chapters.add_cue(title)
         elif message == "/gamestop":  # signal a game stop to be recorded in the chapter webvtt file
             self.last_chapter_time = 0
@@ -205,7 +205,7 @@ class MumbleRecBot:
                         for user in self.mumble.users.values():
                             if user["name"] != USER:
                                 usernames.append(user["name"])
-                        title = "<c.system>Recording started with users {users}".format(users=",".join(usernames))
+                        title = "<c.system>Recording started with users {users}".format(users=",".join(usernames).encode('utf-8'))
                         self.captions.add_cue(title, duration=2)
 
                 if self.cursor_time < time.time() - BUFFER:  # it's time to check audio
