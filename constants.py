@@ -17,7 +17,7 @@ HOST = "mumble.nue.suse.com"  # murmur server
 PORT = 64738  # murmur port
 USER = "recorder"  # mumur user
 PASSWORD = "recorderpw"  # mumur user
-CHANNEL = ""  # channel to move in ("" = root)
+CHANNEL = "cloud"  # channel to move in ("" = root)
 
 USER_COUNT = 2  # start to record with how many connected users (recorder not included)
 

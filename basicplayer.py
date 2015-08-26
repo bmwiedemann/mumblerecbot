@@ -48,6 +48,6 @@ while frames:
 while mumble.sound_output.get_buffer_size() > 0:  # wait for the output buffer to empty
     time.sleep(0.01)  # wait for the mumble buffer's exhaustion before exiting
 
-time.sleep(1.4)  # some extra time for transmission
+time.sleep(1.2)  # some extra time for transmission
 
 audio.close()
